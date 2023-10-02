@@ -10,14 +10,24 @@ class Main extends React.Component {
     }
   }
 
+  handleCreateTask = (task) => {
+    if(task.trim() === "") {
+      alert("Empty task is not allowed.");
+      return;
+    }
+    this.setState((preState) => this.state.tasks.push({task: task, isCompleted: false}));
+    // this.state.tasks.push({task: task, isCompleted: false});
+    console.log(this.state.tasks);
+  };
+
   render() {
     return (<div>
         <h1>ToDos</h1>
 
         <div>
-        <CreateTask />
+        <CreateTask createTask={this.handleCreateTask} />
         <br />
-        <TaskList />
+        <TaskList tasks={this.state.tasks} />
         </div>
       </div>
     );
