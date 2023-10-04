@@ -7,6 +7,14 @@ export default class TaskList extends Component {
   //   this.state
   // }
 
+  // deleteTask = (id) => {
+  //   this.props.setState((preState) => {
+  //     console.log("Here now");
+  //     // preState.tasks.splice(id, 1);
+  //     console.log(preState.tasks);
+  //   });
+  // };
+
   render() {
     return (
       <table>
@@ -18,7 +26,9 @@ export default class TaskList extends Component {
         </thead>
         <tbody>
           {this.props.tasks.map((task, index) => (
-            <TaskItem key={index} id={index} task={task} />
+            <TaskItem key={index} id={index} task={task} deleteTask={() => this.props.deleteTask(index)} 
+              updateTask={this.props.updateTask} 
+            />
           ))}
         </tbody>
       </table>
