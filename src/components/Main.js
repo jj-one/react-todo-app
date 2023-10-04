@@ -36,6 +36,12 @@ class Main extends React.Component {
     this.setState({tasks: tasks});
   };
 
+  toggleTask = (taskId) => {
+    const targetTask = tasks[taskId];
+    targetTask.isCompleted = !targetTask.isCompleted;
+    this.setState({tasks: tasks});
+  };
+
   render() {
     return (<div>
         <h1>ToDos</h1>
@@ -43,7 +49,12 @@ class Main extends React.Component {
         <div>
         <CreateTask createTask={this.handleCreateTask} />
         <br />
-        <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} updateTask={this.updateTask} />
+        <TaskList 
+          tasks={this.state.tasks} 
+          deleteTask={this.deleteTask} 
+          updateTask={this.updateTask} 
+          toggleTask={this.toggleTask} 
+        />
         </div>
       </div>
     );

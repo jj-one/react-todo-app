@@ -26,8 +26,13 @@ export default class TaskList extends Component {
         </thead>
         <tbody>
           {this.props.tasks.map((task, index) => (
-            <TaskItem key={index} id={index} task={task} deleteTask={() => this.props.deleteTask(index)} 
+            <TaskItem 
+              key={index} 
+              id={index} 
+              task={task} 
+              deleteTask={() => this.props.deleteTask(index)} 
               updateTask={this.props.updateTask} 
+              toggleTask={this.props.toggleTask}
             />
           ))}
         </tbody>
