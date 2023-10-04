@@ -2,13 +2,13 @@ import React from "react";
 import CreateTask from "./CreateTask";
 import TaskList from "./TaskList";
 
-const tasks = [];
+const tasks = localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : [];
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: []
+      tasks: tasks
     }
   }
 
@@ -21,25 +21,27 @@ class Main extends React.Component {
     // this.state.tasks.push({task: task, isCompleted: false});
     tasks.push({task: task, isCompleted: false});
     this.setState({tasks: tasks});
-    console.log(this.state.tasks);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   };
 
   deleteTask = (id) => {
-    console.log(`Final Delete: ${id} and length: ${tasks.length}`);
     // tasks = tasks.filter((task, index) => index !== id);
     tasks.splice(id, 1);
     this.setState({tasks: tasks});
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   };
 
   updateTask = (taskId, taskStr) => {
     tasks[taskId].task = taskStr;
     this.setState({tasks: tasks});
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   };
 
   toggleTask = (taskId) => {
     const targetTask = tasks[taskId];
     targetTask.isCompleted = !targetTask.isCompleted;
     this.setState({tasks: tasks});
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   };
 
   render() {
