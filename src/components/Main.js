@@ -43,10 +43,10 @@ class Main extends React.Component {
   };
 
   render() {
-    return (<div>
+    return (<div className="main">
         <h1>ToDos</h1>
 
-        <div>
+        <div className="content">
         <CreateTask createTask={this.handleCreateTask} />
         <br />
         <TaskList 

@@ -26,7 +26,7 @@ export default class CreateTask extends Component {
         <label>
           <input type="text" value={this.state.task} onChange={this.handleTaskChange} placeholder='Enter Task' autoFocus />
         </label>
-        <button>Submit</button>
+        <button className='add'>Submit</button>
       </form>
     );
   }
